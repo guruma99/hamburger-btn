@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.ham-btn {
+  width: 160px;
+  height: 150px;
+  position: relative;
+  /* border: 1px solid red; */
+  overflow: hidden;
+}
+
+.ham-btn::before,
+.ham-btn::after,
+.ham-btn div::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.ham-btn::before {
+  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 50%;
+
+  transition: all 500ms ease-in-out;
+}
+
+.ham-btn::after {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  transition: all 500ms ease-in-out;
+}
+
+.ham-btn div:before {
+  transform: translate(-50%, -50%);
+  bottom: 0%;
+  left: 50%;
+
+  transition: all 500ms ease-in-out;
+}
+
+.ham-btn:hover.ham-btn::before {
+  transform: translate(-50%, -50%) rotate(135deg);
+  width: 180px;
+  top: 50%;
+}
+
+.ham-btn:hover.ham-btn::after {
+  transform: translate(-50%, -50%) rotate(-135deg);
+  width: 180px;
+}
+
+
+.ham-btn:hover.ham-btn div:before {
+  transform: translate(-50%, 80px);
+}
+
+/* 🐛 호버시 엑스로 바뀔 때 네모 맞은편 꼭지점과의 길이가 선의 길이보다 더 멀기에 크기조정
+-> 안그러면 버튼이 작아짐 */
+
+/*😀💡 transform: translate(-50%, -50%) 은 그자리에서 요소 자체를 중앙에 위차하게 만드니까
+left값도 안줘도 되는구나.
+scale을 0으로 줘서 마지막 바를 사라지게 할수도 ㅇ
+overflow없어도 되겠다*/
